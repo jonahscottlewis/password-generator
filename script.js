@@ -9,12 +9,13 @@ var special = [" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", 
 
 function generatePassword(){
   var passwordReturn = [];
-  var userLength = parseInt(prompt("How long?"));
+  var userLength = parseInt(prompt("How long would you like your password?"));
   
 
   if (userLength > 8 && userLength < 128) {
   var useNumbers = confirm("Would you like to use numbers?");
-  var useLetters = confirm("Would you like to use letters?");
+  var useUpper = confirm("Would you like to use upper casse letters?");
+  var useLower = confirm("Would you like to use lower case letters?")
   var useSpecial = confirm("Would you like to use spcial characters?");
    if (useNumbers || useLetters || useSpecial){
     var allPossibleCharacters = [];
@@ -23,10 +24,13 @@ function generatePassword(){
     allPossibleCharacters = allPossibleCharacters.concat(numbers);
    }
 
-   if (useLetters) {
+   if (useUpper) {
     allPossibleCharacters = allPossibleCharacters.concat(letters);
    }
 
+   if(useLower) {
+    allPossibleCharacters = allPossibleCharacters.concat(letters);
+   }
    if (useSpecial) {
     allPossibleCharacters = allPossibleCharacters.concat(special);
    }
@@ -60,6 +64,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-
